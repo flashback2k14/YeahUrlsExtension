@@ -80,6 +80,11 @@ window.addEventListener('DOMContentLoaded', function() {
       var decrypted = CryptoJS.AES.decrypt(items.password, "!'Secret*/Passphrase#?");
       var pw = decrypted.toString(CryptoJS.enc.Utf8);
       
+	  if ((email.length === 0) || (pw.length === 0)) {
+		alert('You are not logged in. Please go to the Options Menue.');
+		return;
+	  }
+	  
       var user = {
         "email": email,
         "password": pw
