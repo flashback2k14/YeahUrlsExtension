@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>YEAH! URLs Extension</title>
+    <link rel="stylesheet" type="text/stylesheet" href="styles/popup.css" />
+  <body>
+    <div id="mainContainer">
+      <div id="buttonTabContainer">
+        <button id="btnGetUrl" class="custom-btn-style">GET URL</button>
+        <button id="btnGetAllUrl" class="custom-btn-style">GET ALL URL</button>
+      </div>
+      
+      <div id="listContainer">
+        <label for="listUrlHolder"><b>URL List:</b></label>
+        <ul id="listUrlHolder">
+          <!-- Fill in JS -->
+        </ul>
+      </div>
+      
+      <div id="buttonOptContainer">
+        <button id="btnClear">Clear</button>
+        <button id="btnSave">Save</button>
+      </div>
+    </div>
+    <script src="libs/firebase.js"></script>
+    <script src="libs/aes.js"></script>
+    <script src="scripts/popup.js"></script>
+  </body>
+</html>
