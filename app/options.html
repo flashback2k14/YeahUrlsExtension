@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <title>YEAH! URLs Extension - Login</title>
+    <link rel="icon" href="images/note_add_white_48dp_2x.png" />
+    <link rel="stylesheet" type="text/stylesheet" href="styles/options.css" />
+  <body>
+    <header id="heading">
+      <h1 id="project_title">Yeah! URLs Extension by Yeah! Dev</h1>
+    </header>
+    
+    <div id="loginContainer">
+      <div id="loginHeader">
+        <h1><span>Login</span></h1>
+      </div>
+      <br/>
+      <label for="txtEmailaddress"><strong>Email:</strong></label><br/>
+      <input id="txtEmailaddress" type="email" required />
+      <br/><hr/>
+      <label for="txtPassword"><strong>Password:</strong></label><br/>
+      <input id="txtPassword" type="password" required />
+      <br/><hr/>
+	  <button id="btnReset">Reset</button>
+	  <button id="btnLogin">Login</button>
+      <div id="status"></div>
+    </div>
+
+    <div id="otherContainer">
+      <div id="otherHeader">
+        <h1><span>Settings</span></h1>
+      </div>
+      <div id="otherBody">
+        <label id="lblIconSelect" for="iconSelect"><strong>Change Icon:</strong></label><br/>
+        <select id="iconSelect">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+        <!--<br/>
+        <br/>
+        <label for="colorSelect">Color:</label><br/>
+        <select id="colorSelect">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>-->
+      </div>
+    </div>
+
+    <footer id="footing">
+      <p>YEAH! URLs Extension maintained by <a target="blank" href="https://github.com/flashback2k14">flashback2k14</a></p>
+    </footer>
+    <!-- scripts -->
+    <script src="libs/firebase.js"></script>
+    <script src="libs/aes.js"></script>
+    <script src="scripts/options.js"></script>
+  </body>
+</html>
