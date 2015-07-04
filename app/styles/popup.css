@@ -36,8 +36,25 @@ body {
   background-color: #eee;
 }
 
+#inputContainer {
+  /*margin: 5px;*/
+  padding: 6px;
+}
+
 #buttonOptContainer {
   padding: 4px;
+}
+
+#txtKeywords {
+  width: 285px;
+  padding-top: 3px;
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+}
+
+#txtKeywords:focus {
+  border-bottom: solid 2px #969696;
 }
 
 .custom-btn-style {
@@ -110,4 +127,23 @@ ul li {
   padding: 0 0 0 5px;
   text-indent: -1em;
   word-wrap: break-word;
+}
+
+input[type="text"] {
+  display: block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: none;
+  -moz-border-radius: none;
+  -ms-border-radius: none;
+  -o-border-radius: none;
+  border-radius: none;
+}
+
+input[type="text"]:focus {
+  outline: none;
 }

@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var btnClear = document.querySelector('#btnClear');
   var btnSave = document.querySelector('#btnSave');
   var imgSettings = document.querySelector('#imgSettings');
+  var txtKeywords = document.querySelector('#txtKeywords');
   // functions
   function openSettings() {
     if (chrome.runtime.openOptionsPage) {
@@ -15,6 +16,10 @@ window.addEventListener('DOMContentLoaded', function() {
       // Reasonable fallback.
       window.open(chrome.runtime.getURL('options.html'));
     }
+  }
+  function clearForm() {
+    listUrlHolder.innerHTML = '';
+    txtKeywords.value = '';
   }
   function getCurrentTab() {
     return new Promise(function(resolve, reject){
@@ -70,9 +75,10 @@ window.addEventListener('DOMContentLoaded', function() {
       var item = {};
       item.id = (i + 1);
       item.value = el[i].innerHTML;
+      item.keywords = txtKeywords.value;
       item.date = t.toLocaleDateString();
       item.time = t.toLocaleTimeString();
-      item.timestamp = Date.now();
+      item.timestamp = ts;
       coll.push(item);
     }
     return coll;
@@ -101,7 +107,7 @@ window.addEventListener('DOMContentLoaded', function() {
         
         urlcollectorRef.set(urlCollection, function onComplete() {
           alert('Speicherung erfolgreich!');
-          listUrlHolder.innerHTML = '';
+          clearForm();
         });
       }).catch(function (err) {
         alert('Error: ' + err);
@@ -131,7 +137,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
   btnClear.addEventListener('click', function() {
-    listUrlHolder.innerHTML = '';
+    clearForm();
   });
   btnSave.addEventListener('click', function() {
     saveListToFirebase();
