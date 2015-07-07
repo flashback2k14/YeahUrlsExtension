@@ -10,10 +10,8 @@ window.addEventListener('DOMContentLoaded', function() {
   // functions
   function openSettings() {
     if (chrome.runtime.openOptionsPage) {
-      // New way to open options pages, if supported (Chrome 42+).
       chrome.runtime.openOptionsPage();
     } else {
-      // Reasonable fallback.
       window.open(chrome.runtime.getURL('options.html'));
     }
   }
@@ -48,19 +46,10 @@ window.addEventListener('DOMContentLoaded', function() {
   function getOptions() {
     return new Promise(function(resolve, reject) {
       chrome.storage.sync.get({
-        emailAddress: '',
-        password: ''
+        userLoginId: '',
+        loginExpireDate: ''
       }, function(items) {
         resolve(items);
-      });
-    });
-  }
-  function authWithPassword(userObj) {
-    return new Promise(function(resolve, reject) {
-      var rootRef = new Firebase("https://yeah-url-extension.firebaseio.com/");
-      rootRef.authWithPassword(userObj, function onAuth(err, user) {
-        if (err) reject(err);
-        if (user) resolve(user);
       });
     });
   }
@@ -85,32 +74,22 @@ window.addEventListener('DOMContentLoaded', function() {
   }
   function saveListToFirebase(e) {
     getOptions().then(function(items) {
-      var email = items.emailAddress;
-      var decrypted = CryptoJS.AES.decrypt(items.password, "!'Secret*/Passphrase#?");
-      var pw = decrypted.toString(CryptoJS.enc.Utf8);
+      var userId = items.userLoginId;
+      var expireDate = items.loginExpireDate
 
-      if ((email.length === 0) || (pw.length === 0)) {
-		alert('You are not logged in. Please go to the Options Menue.');
-		return;
-	  }
+      if (expireDate === Date.now()) {
+		    alert('You are not logged in. Please go to the Options Menue.');
+		    return;
+      }
 
-      var user = {
-        "email": email,
-        "password": pw
-      };
-      
-      authWithPassword(user).then(function(user) {
-        var urlCollection = getUrlCollection();
+      var urlCollection = getUrlCollection();
         
-        var rootRef = new Firebase("https://yeah-url-extension.firebaseio.com/" + user.uid + "/urlcollector");
-        var urlcollectorRef = rootRef.push();
+      var rootRef = new Firebase("https://yeah-url-extension.firebaseio.com/" + userId + "/urlcollector");
+      var urlcollectorRef = rootRef.push();
         
-        urlcollectorRef.set(urlCollection, function onComplete() {
-          alert('Speicherung erfolgreich!');
-          clearForm();
-        });
-      }).catch(function (err) {
-        alert('Error: ' + err);
+      urlcollectorRef.set(urlCollection, function onComplete() {
+        alert('Speicherung erfolgreich!');
+        clearForm();
       });
     }).catch(function (err) {
       alert('Error: ' + err);
