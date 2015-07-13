@@ -75,9 +75,10 @@ window.addEventListener('DOMContentLoaded', function() {
   function saveListToFirebase(e) {
     getOptions().then(function(items) {
       var userId = items.userLoginId;
-      var expireDate = items.loginExpireDate
+      var expireDate = items.loginExpireDate;
+      var currTimestamp = Math.round(Date.now() / 1000);
 
-      if (expireDate === Date.now()) {
+      if ((typeof userId === 'undefined') || (expireDate === currTimestamp)) {
 		    alert('You are not logged in. Please go to the Options Menue.');
 		    return;
       }
