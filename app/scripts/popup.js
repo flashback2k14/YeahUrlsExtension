@@ -53,14 +53,14 @@ window.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
-  function getUrlCollection() {
+  function getUrlCollection(objId) {
     var count = listUrlHolder.childElementCount;
     var el = listUrlHolder.children;
     var coll = [];
     var ts = Date.now();
     var t = new Date(ts);
     
-    for(var i = 0; i < count; i++) {
+    for (var i = 0; i < count; i++) {
       var item = {};
       item.id = (i + 1);
       item.value = el[i].innerHTML;
@@ -68,6 +68,7 @@ window.addEventListener('DOMContentLoaded', function() {
       item.date = t.toLocaleDateString();
       item.time = t.toLocaleTimeString();
       item.timestamp = ts;
+      item.objId = objId;
       coll.push(item);
     }
     return coll;
@@ -79,15 +80,16 @@ window.addEventListener('DOMContentLoaded', function() {
       var currTimestamp = Math.round(Date.now() / 1000);
 
       if ((typeof userId === 'undefined') || (expireDate === currTimestamp)) {
-		    alert('You are not logged in. Please go to the Options Menue.');
-		    return;
+        alert('You are not logged in. Please go to the Options Menue.');
+		return;
       }
 
-      var urlCollection = getUrlCollection();
-        
       var rootRef = new Firebase("https://yeah-url-extension.firebaseio.com/" + userId + "/urlcollector");
       var urlcollectorRef = rootRef.push();
-        
+
+      var objId = urlcollectorRef.key();
+      var urlCollection = getUrlCollection(objId);
+
       urlcollectorRef.set(urlCollection, function onComplete() {
         alert('Speicherung erfolgreich!');
         clearForm();
