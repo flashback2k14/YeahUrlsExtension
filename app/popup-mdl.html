@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>YEAH! URLs Extension</title>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.teal-deep_orange.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="styles/popup-mdl.css">
+</head>
+<body>
+    <!-- tab section -->
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+        <div class="mdl-tabs__tab-bar">
+            <a href="#tabUrls" class="mdl-tabs__tab is-active">URLs</a>
+            <a href="#tabNotes" class="mdl-tabs__tab">Notes</a>
+            <a href="#tabSettings" class="mdl-tabs__tab">Settings</a>
+        </div>
+        <!-- URLs tab section -->
+        <div id="tabUrls" class="mdl-tabs__panel is-active">
+            <div id="mainContainer">
+                <div id="buttonTabContainer">
+                    <button id="btnGetUrl" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+                        GET URL
+                    </button>
+                    <button id="btnGetAllUrl" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                        GET ALL URL
+                    </button>
+                </div>
+
+                <div id="listContainer">
+                    <label for="listUrlHolder"><b>URL List:</b></label>
+                    <ul id="listUrlHolder">
+                        <!-- Fill in JS -->
+                    </ul>
+                </div>
+
+                <div id="inputContainer">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 99%;">
+                        <input class="mdl-textfield__input" type="text" id="txtKeywords" />
+                        <label class="mdl-textfield__label" for="txtKeywords">Keywords</label>
+                    </div>
+                </div>
+
+                <div id="buttonOptContainer">
+                    <button id="btnClear" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                        Clear
+                    </button>
+                    <button id="btnSave" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Notes tab section -->
+        <div id="tabNotes" class="mdl-tabs__panel">
+            <div id="mainContainerNotes">
+
+                <div id="inputContainerNotesTitle">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 99%;">
+                        <input class="mdl-textfield__input" type="text" id="txtNotesTitle" />
+                        <label class="mdl-textfield__label" for="txtNotesTitle">Title</label>
+                    </div>
+                </div>
+
+
+                <div id="inputContainerNotesKeywords">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 99%;">
+                        <input class="mdl-textfield__input" type="text" id="txtNotesKeywords" />
+                        <label class="mdl-textfield__label" for="txtNotesKeywords">Keywords</label>
+                    </div>
+                </div>
+
+                <div id="inputContainerNotes">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 99%;">
+                        <textarea class="mdl-textfield__input" type="text" rows= "8" id="txtNotes" ></textarea>
+                        <label class="mdl-textfield__label" for="txtNotes">Notes</label>
+                    </div>
+                </div>
+
+                <div id="buttonOptNotesContainer">
+                    <button id="btnClearNotes" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                        Clear
+                    </button>
+                    <button id="btnSaveNotes" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Settings tab section -->
+        <div id="tabSettings" class="mdl-tabs__panel">
+            <div id="mainContainerSettings">
+                <button id="btnSettings" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+                    Open Settings
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- script section -->
+    <script src="libs/material.min.js"></script>
+    <script src="libs/firebase.min.js"></script>
+    <script src="scripts/popup.js"></script>
+</body>
+</html>

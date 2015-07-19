@@ -1,7 +1,7 @@
 {
   "name": "Yeah! Urls Extension",
   "description": "This extension gets all URLs from the open Tabs on the Window.",
-  "version": "1.9",
+  "version": "2.0",
   "manifest_version": 2,
   "browser_action": {
     "default_icon": {
@@ -9,7 +9,7 @@
       "38": "app/images/note_add_white_48dp_2x.png"
     },
     "default_title": "Yeah! URLs",
-    "default_popup": "app/popup.html"
+    "default_popup": "app/popup-mdl.html"
   },
   "permissions": [
     "activeTab",

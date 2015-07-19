@@ -1,0 +1,96 @@
+html {
+  width: 310px;
+  min-height: 200px;
+  height: 200px;
+  max-height: 200px;
+}
+
+body {
+  width: 300px;
+  min-height: 200px;
+  height: 200px;
+  max-height: 200px;
+  margin: 2px;
+  padding: 2px;
+}
+
+/*Styling for URLs Tab*/
+#mainContainer {
+  background-color: #fff;
+  margin-top: 5px;
+}
+
+#buttonTabContainer {
+  padding: 4px;
+}
+
+#listContainer {
+  margin: 5px;
+  padding: 6px;
+  background-color: #eee;
+}
+
+#inputContainer {
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-bottom: 0;
+}
+
+#buttonOptContainer {
+  padding: 4px;
+}
+
+#btnGetAllUrl, #btnClear, #btnClearNotes {
+  color: #ffffff;
+}
+
+button {
+  margin-bottom: 3px;
+  width: 144px;
+  height: 30px;
+}
+
+ul {
+  margin: 0 0 0 5px;
+  padding: 0 0 0 3px;
+  min-height: 180px;
+  height: 180px;
+  max-height: 180px;
+  overflow: auto;
+}
+
+ul li {
+  margin: 0 0 0 10px;
+  padding: 0 0 0 5px;
+  text-indent: -1em;
+  word-wrap: break-word;
+}
+
+/*Styling for Notes Tab*/
+#mainContainerNotes {
+  background-color: #fff;
+  margin-top: 5px;
+}
+
+#inputContainerNotesTitle,
+#inputContainerNotesKeywords,
+#inputContainerNotes {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#buttonOptNotesContainer {
+  padding: 4px;
+}
+
+/*Styling for Settings Tab*/
+#mainContainerSettings {
+  background-color: #fff;
+  margin-top: 5px;
+}
+
+#btnSettings {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+}
