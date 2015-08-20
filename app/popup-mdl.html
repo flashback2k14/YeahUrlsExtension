@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>YEAH! URLs Extension</title>
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.teal-deep_orange.min.css" />
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.teal-deep_orange.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="styles/popup-mdl.css">
 </head>
@@ -26,21 +26,18 @@
                         GET ALL URL
                     </button>
                 </div>
-
                 <div id="listContainer">
                     <label for="listUrlHolder"><b>URL List:</b></label>
                     <ul id="listUrlHolder">
                         <!-- Fill in JS -->
                     </ul>
                 </div>
-
                 <div id="inputContainer">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 99%;">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="fiContainer" style="width: 99%;">
                         <input class="mdl-textfield__input" type="text" id="txtKeywords" />
                         <label class="mdl-textfield__label" for="txtKeywords">Keywords</label>
                     </div>
                 </div>
-
                 <div id="buttonOptContainer">
                     <button id="btnClear" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                         Clear
@@ -54,29 +51,24 @@
         <!-- Notes tab section -->
         <div id="tabNotes" class="mdl-tabs__panel">
             <div id="mainContainerNotes">
-
                 <div id="inputContainerNotesTitle">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 99%;">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="fiContainerNotesTitle" style="width: 99%;">
                         <input class="mdl-textfield__input" type="text" id="txtNotesTitle" />
                         <label class="mdl-textfield__label" for="txtNotesTitle">Title</label>
                     </div>
                 </div>
-
-
                 <div id="inputContainerNotesKeywords">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 99%;">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="fiContainerNotesKeywords" style="width: 99%;">
                         <input class="mdl-textfield__input" type="text" id="txtNotesKeywords" />
                         <label class="mdl-textfield__label" for="txtNotesKeywords">Keywords</label>
                     </div>
                 </div>
-
                 <div id="inputContainerNotes">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 99%;">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="fiContainerNotes" style="width: 99%;">
                         <textarea class="mdl-textfield__input" type="text" rows= "8" id="txtNotes" ></textarea>
                         <label class="mdl-textfield__label" for="txtNotes">Notes</label>
                     </div>
                 </div>
-
                 <div id="buttonOptNotesContainer">
                     <button id="btnClearNotes" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                         Clear

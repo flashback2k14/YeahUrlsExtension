@@ -12,18 +12,17 @@ window.addEventListener('DOMContentLoaded', function() {
     chrome.storage.sync.set({
       userLoginId: userId,
       loginExpireDate: expireDate
-    }, 
+    },
     function() {
       status.textContent = 'Options saved.';
       inputEmail.value = '';
       inputPassword.value = '';
-      
+
       setTimeout(function() {
         status.textContent = '';
       }, 1000);
     });
   }
-
   function authWithPassword(userObj) {
     return new Promise(function(resolve, reject) {
       var rootRef = new Firebase("https://yeah-url-extension.firebaseio.com/");
@@ -33,37 +32,36 @@ window.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
-
   function saveLoginOptions() {
     var email = inputEmail.value;
     var pw = inputPassword.value;
-    
+
     var user = {
       "email": email,
       "password": pw
     };
-      
-    authWithPassword(user).then(function(user) {
-      saveOptions(user.uid, user.expires);
-    }).catch(function (err) {
-      alert('Error: ' + err);
-    });
+
+    authWithPassword(user)
+      .then(function(user) {
+        saveOptions(user.uid, user.expires);
+      })
+      .catch(function (err) {
+        alert('Error: ' + err);
+      });
   }
-  
   function resetLoginOptions() {
     chrome.storage.sync.remove([
       "userLoginId",
       "loginExpireDate"
-    ], 
+    ],
     function() {
       status.textContent = 'Options reseted.';
-        
+
       setTimeout(function() {
         status.textContent = '';
       }, 1000);
     });
   }
-  
   function changeIcon(e) {
     if (e.target.value === 'dark') {
       chrome.browserAction.setIcon({
@@ -92,19 +90,15 @@ window.addEventListener('DOMContentLoaded', function() {
   btnLogin.addEventListener('click', function() {
     saveLoginOptions();
   });
-
   btnReset.addEventListener('click', function() {
     resetLoginOptions();
   });
-
   iconSelect.addEventListener('load', function() {
       iconSelect.value = window.localStorage.getItem('browserIcon');
   });
-
   iconSelect.addEventListener('change', function(e) {
     changeIcon(e);
   });
-
   //colorSelect.addEventListener('change', function(e) {
   //  changeColor(e);
   //});

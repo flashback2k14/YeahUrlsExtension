@@ -1,7 +1,7 @@
 {
   "name": "Yeah! Urls Extension",
-  "description": "This extension gets all URLs from the open Tabs on the Window.",
-  "version": "2.0",
+  "description": "This extension allows you to get all URLs from the open Tabs on the Window and collect Notes.",
+  "version": "2.1",
   "manifest_version": 2,
   "browser_action": {
     "default_icon": {
@@ -16,10 +16,6 @@
     "tabs",
     "storage"
   ],
-  "background": {
-    "scripts": ["app/scripts/background.js"],
-    "persistent": false
-  },
   "options_page": "app/options.html",
   "options_ui": {
     "page": "app/options.html",
