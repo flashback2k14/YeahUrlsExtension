@@ -88,8 +88,10 @@ window.addEventListener('DOMContentLoaded', function() {
         var expireDate = items.loginExpireDate;
         var currTimestamp = Math.round(Date.now() / 1000);
 
-        if ((typeof userId === 'undefined') || (expireDate === currTimestamp)) {
+        if ((typeof userId === 'undefined') || (currTimestamp >= expireDate)) {
           alert('You are not logged in. Please go to the Options Menue.');
+          clearForm();
+          openSettings();
           return;
         }
 
@@ -141,8 +143,10 @@ window.addEventListener('DOMContentLoaded', function() {
         var expireDate = items.loginExpireDate;
         var currTimestamp = Math.round(Date.now() / 1000);
 
-        if ((typeof userId === 'undefined') || (expireDate === currTimestamp)) {
+        if ((typeof userId === 'undefined') || (currTimestamp >= expireDate)) {
           alert('You are not logged in. Please go to the Options Menue.');
+          clearNoteForm();
+          openSettings();
           return;
         }
 
