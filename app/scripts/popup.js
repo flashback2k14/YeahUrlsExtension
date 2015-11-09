@@ -1,3 +1,31 @@
+window.addEventListener('load', function() { 
+   return new Promise(function(resolve, reject) {
+      chrome.storage.sync.get({
+        userLoginId: '',
+        loginExpireDate: ''
+      }, function(items) {
+        resolve(items);
+      });
+    }).then(function(items) {
+       var userId = items.userLoginId;
+       var expireDate = items.loginExpireDate;
+       var currTimestamp = Math.round(Date.now() / 1000);
+       
+       if ((typeof userId === 'undefined') || (currTimestamp >= expireDate)) {
+          alert('You are not logged in. Please go to the Options Menue.');
+          
+          if (chrome.runtime.openOptionsPage) {
+            chrome.runtime.openOptionsPage();
+          } else {
+            window.open(chrome.runtime.getURL('options.html'));
+          }
+          return;
+       }
+    }).catch(function(err) {
+      alert('Error: ' + err);
+    });
+});
+
 window.addEventListener('DOMContentLoaded', function() {
   // variables
   // URLs
