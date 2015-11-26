@@ -1,12 +1,12 @@
 html {
-  width: 310px;
+  width: 420px;
   min-height: 200px;
   height: 200px;
   max-height: 200px;
 }
 
 body {
-  width: 300px;
+  width: 410px;
   min-height: 200px;
   height: 200px;
   max-height: 200px;
@@ -30,6 +30,12 @@ body {
   background-color: #eee;
 }
 
+#listUrlHolder {
+  min-height: 185px;
+  height: 185px;
+  max-height: 185px;
+}
+
 #inputContainer {
   padding-left: 6px;
   padding-right: 6px;
@@ -44,6 +50,10 @@ body {
   color: #ffffff;
 }
 
+#btnGetAllUrl, #btnSave, #btnSaveNotes {
+  margin-left: 110px;
+}
+
 button {
   margin-bottom: 3px;
   width: 144px;
@@ -52,17 +62,15 @@ button {
 
 ul {
   margin: 0 0 0 5px;
-  padding: 0 0 0 3px;
-  min-height: 180px;
-  height: 180px;
-  max-height: 180px;
+  padding: 0 0 0 8px;
+  list-style-type: square;
   overflow: auto;
 }
 
 ul li {
   margin: 0 0 0 10px;
-  padding: 0 0 0 5px;
-  text-indent: -1em;
+  padding: 0 0 0 8px;
+  text-indent: -0.5em;
   word-wrap: break-word;
 }
 
@@ -81,6 +89,34 @@ ul li {
 
 #buttonOptNotesContainer {
   padding: 4px;
+}
+
+/*Styling for ToDos Tab*/
+#mainContainerTodos {
+  background-color: #fff;
+  margin-top: 5px;
+}
+
+#listContainerTodos {
+  margin: 10px 5px 5px 5px;
+  padding: 6px;
+  background-color: #eee;
+}
+
+#listTodosHolder {
+  min-height: 300px;
+  height: 300px;
+  max-height: 300px;
+}
+
+#inputContainerTodos {
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-bottom: 0;
+}
+
+#btnAddTodo {
+  margin-left: 30px;
 }
 
 /*Styling for Settings Tab*/
