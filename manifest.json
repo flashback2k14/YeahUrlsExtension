@@ -1,12 +1,12 @@
 {
   "name": "Yeah! Urls Extension",
   "description": "This extension allows you to get all URLs from the open Tabs on the Window and collect Notes.",
-  "version": "2.5",
+  "version": "2.6",
   "manifest_version": 2,
   "browser_action": {
     "default_icon": {
-      "19": "app/images/light_128.png",
-      "38": "app/images/light_128.png",
+      "19": "app/images/light_19.png",
+      "38": "app/images/light_38.png",
       "128": "app/images/light_128.png"
     },
     "default_title": "Yeah! URLs",
@@ -15,7 +15,9 @@
   "permissions": [
     "activeTab",
     "tabs",
-    "storage"
+    "storage",
+    "http://*/*",
+		"https://*/*"
   ],
   "options_page": "app/options.html",
   "options_ui": {
@@ -25,7 +27,6 @@
   "content_scripts": [{
 		"matches": ["http://*/*", "https://*/*"],
 		"js": ["app/libs/firebase.min.js", "app/libs/material.min.js", "app/scripts/options.js", "app/scripts/popup.js", "app/scripts/util.js"],
-		"css": ["app/styles/options.css", "app/styles/popup-mdl.css"],
 		"run_at": "document_end"
 	}]
 }

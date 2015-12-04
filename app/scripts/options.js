@@ -5,11 +5,11 @@ window.addEventListener('load', function() {
   if (browserIcon !== null) {
     switch (browserIcon) {
       case 'light':
-        chrome.browserAction.setIcon({path: 'images/light_128.png'});
+        chrome.browserAction.setIcon({path: 'images/light_39.png'});
         document.getElementById("iconSelect").selectedIndex = "0";
         break;
       case 'dark':
-        chrome.browserAction.setIcon({path: 'images/dark_128.png'});
+        chrome.browserAction.setIcon({path: 'images/dark_39.png'});
         document.getElementById("iconSelect").selectedIndex = "1";
         break;
       default:
@@ -101,11 +101,11 @@ window.addEventListener('DOMContentLoaded', function() {
   function changeIcon(e) {
     switch (e.target.value) {
       case 'dark':
-        chrome.browserAction.setIcon({path: 'images/dark_128.png'});
+        chrome.browserAction.setIcon({path: 'images/dark_39.png'});
         window.localStorage.setItem('browserIcon', 'dark');
         break;
       case 'light':
-        chrome.browserAction.setIcon({path: 'images/light_128.png'});
+        chrome.browserAction.setIcon({path: 'images/light_39.png'});
         window.localStorage.setItem('browserIcon', 'light');
         break;
       default:
