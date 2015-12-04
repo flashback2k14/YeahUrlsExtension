@@ -208,12 +208,14 @@ var Util = (function (chrome, Promise, Firebase) {
 				.then(function (items) {
 					var todoRef = new Firebase("https://todoapp-appengine.firebaseio.com/todoitems");
 					todoRef.on("value", function (snapshot) {
-						if (listTodosHolder.children.length > 0) {
-							listTodosHolder.innerHTML = "";
+						if (listTodosHolder !== null) {
+							if (listTodosHolder.children.length > 0) {
+								listTodosHolder.innerHTML = "";
+							}
+							snapshot.forEach(function (child) {
+								createListItem(child.val().text, listTodosHolder);
+							}.bind(this));	
 						}
-						snapshot.forEach(function (child) {
-							createListItem(child.val().text, listTodosHolder);
-						}.bind(this));
 					});
 				})
 				.catch(function (err) {

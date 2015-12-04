@@ -4,8 +4,8 @@
 }
 
 body {
-  width: 900px;
-  height: 500px;
+  width: 800px;
+  height: 400px;
 }
 
 #heading {
@@ -17,13 +17,12 @@ body {
   background: linear-gradient(top, #373737, #212121);
   color: #fff;
   padding: 20px 10px 20px 10px;
-  width: 97.9%;
 }
 
 #project_title {
   margin: 0;
   color: #fff;
-  font-size: 38px;
+  font-size: 30px;
   font-weight: 600;
   text-shadow: #111 0 0 10px;
 }
@@ -59,7 +58,7 @@ body {
   background: linear-gradient(top, #373737, #212121);
   color: #fff;
   margin: 0;
-  padding: 30px 10px 10px 10px;
+  padding: 25px 10px 10px 10px;
 }
 
 #otherBody {
@@ -114,11 +113,11 @@ body {
   border: 2px solid #742E2E;
 }
 
-#lblIconSelect {
+#lblIconSelect, #lblBatchSelect {
   margin-left: 0;
 }
 
-#iconSelect {
+#iconSelect, #batchColorSelect {
   width: 150px;
 }
 
