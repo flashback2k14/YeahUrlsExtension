@@ -145,5 +145,5 @@ window.addEventListener('DOMContentLoaded', function() {
   });
   batchColorSelect.addEventListener('change', function(e) {
     changeBatchColor(e);
-  });
+  }); 
 });

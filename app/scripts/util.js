@@ -95,7 +95,7 @@ var Util = (function (chrome, Promise, Firebase) {
 					var expireDate = items.loginExpireDate;
 					var currTimestamp = Math.round(Date.now() / 1000);
 
-					if ((typeof userId === 'undefined') || (currTimestamp >= expireDate)) {
+					if ((userId === null) || (expireDate === null) || (typeof(userId) === 'undefined') || (typeof(expireDate) === 'undefined') || (currTimestamp >= expireDate)) {
 						alert('You are not logged in. Please go to the Options Menue.');
 						clearForm(listUrlHolder, txtKeywords, fiContainer);
 						openSettings();
@@ -176,7 +176,7 @@ var Util = (function (chrome, Promise, Firebase) {
 					var expireDate = items.loginExpireDate;
 					var currTimestamp = Math.round(Date.now() / 1000);
 
-					if ((typeof userId === 'undefined') || (currTimestamp >= expireDate)) {
+					if ((userId === null) || (expireDate === null) || (typeof(userId) === 'undefined') || (typeof(expireDate) === 'undefined') || (currTimestamp >= expireDate)) {
 						alert('You are not logged in. Please go to the Options Menue.');
 						clearNoteForm(txtTitle, txtKeywordsNote, txtNote, fiContainerNotesTitle, fiContainerNotesKeywords, fiContainerNotes);
 						openSettings();

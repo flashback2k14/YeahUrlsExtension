@@ -5,7 +5,7 @@ window.addEventListener('load', function() {
       var expireDate = items.loginExpireDate;
       var currTimestamp = Math.round(Date.now() / 1000);
 
-      if ((typeof userId === 'undefined') || (currTimestamp >= expireDate)) {
+      if ((userId === null) || (expireDate === null) || (typeof(userId) === 'undefined') || (typeof(expireDate) === 'undefined') || (currTimestamp >= expireDate)) {
         alert('You are not logged in. Please go to the Options Menue.');
         Util.get().openSettings();
         return;
@@ -20,7 +20,7 @@ window.addEventListener('load', function() {
 
 window.addEventListener('DOMContentLoaded', function() {
   /**
-   * VARIABLES
+   * UI Elements
    */
   // URLs
   var btnGetUrl = document.querySelector('#btnGetUrl');
