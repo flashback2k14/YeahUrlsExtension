@@ -4,11 +4,11 @@
 }
 
 body {
-  width: 800px;
+  width: 900px;
   height: 400px;
 }
 
-#heading {
+.heading {
   background: #212121;
   background: -moz-linear-gradient(top, #373737, #212121);
   background: -webkit-linear-gradient(top, #373737, #212121);
@@ -19,7 +19,7 @@ body {
   padding: 20px 10px 20px 10px;
 }
 
-#project_title {
+.projectTitle {
   margin: 0;
   color: #fff;
   font-size: 30px;
@@ -27,29 +27,26 @@ body {
   text-shadow: #111 0 0 10px;
 }
 
-#loginContainer {
+.baseContainer {
   position: absolute;
-  width: 300px;
+  width: 250px;
   height: 230px;
   z-index: 15;
   top: 50%;
-  left: 30%;
   margin: -100px 0 0 -150px;
   border: 1px #212121 solid;
 }
-
-#otherContainer {
-  position: absolute;
-  width: 300px;
-  height: 230px;
-  z-index: 15;
-  top: 50%;
-  left: 70%;
-  margin: -100px 0 0 -150px;
-  border: 1px #212121 solid;
+.urlContainer {
+  left: 23%;
+}
+.toDoContainer {
+  left: 53%;
+}
+.otherContainer {
+  left: 83%;
 }
 
-#loginHeader, #otherHeader {
+.containerHeader {
   background: #212121;
   background: -moz-linear-gradient(top, #373737, #212121);
   background: -webkit-linear-gradient(top, #373737, #212121);
@@ -71,13 +68,14 @@ body {
   margin-top: 5px;
 }
 
-#status {
-  margin-top: 20px;
+#status, 
+#statusTodo {
+  margin-top: 10px;
 }
 
-#btnLogin {
-  margin: 5px;
-  width: 137px;
+.btnLogin {
+  margin: 10px 5px 5px 5px;
+  width: 110px;
   height: 30px;
   color: #FFFDFD;
   background-color: #4CC27B;
@@ -88,15 +86,14 @@ body {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-
-#btnLogin:hover {
+.btnLogin:hover {
   background-color: #4CC27B;
   border: 2px solid #358856;
 }
 
-#btnReset {
-  margin: 5px;
-  width: 137px;
+.btnReset {
+  margin: 10px 10px 5px 5px;
+  width: 110px;
   height: 30px;
   color: #FFFDFD;
   background-color: #C24C4C;
@@ -107,21 +104,22 @@ body {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-
-#btnReset:hover {
+.btnReset:hover {
   background-color: #C24C4C;
   border: 2px solid #742E2E;
 }
 
-#lblIconSelect, #lblBatchSelect {
+#lblIconSelect, 
+#lblBatchSelect {
   margin-left: 0;
 }
 
-#iconSelect, #batchColorSelect {
-  width: 150px;
+#iconSelect, 
+#batchColorSelect {
+  width: 230px;
 }
 
-#footing {
+.footing {
   background: #212121;
   background: -moz-linear-gradient(top, #373737, #212121);
   background: -webkit-linear-gradient(top, #373737, #212121);
@@ -157,7 +155,8 @@ a {
   transition: text-shadow 0.5s ease;
 }
 
-a:hover, a:focus {
+a:hover, 
+a:focus {
   text-decoration: underline;
 }
 
@@ -167,11 +166,12 @@ footer a {
 }
 
 input {
-  width: 285px;
+  width: 235px;
   margin: 5px;
 }
 
-hr, label {
+hr, 
+label {
   margin-left: 5px;
   margin-right: 5px;
 }

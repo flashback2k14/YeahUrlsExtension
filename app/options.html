@@ -3,16 +3,16 @@
   <head>
     <title>YEAH! URLs Extension - Login</title>
     <link rel="icon" href="images/light_128.png">
-    <link rel="stylesheet" type="text/stylesheet" href="styles/options.css">
+    <link rel="stylesheet" href="styles/options.css">
   </head>
   <body>
-    <header id="heading">
-      <h1 id="project_title">Yeah! URLs Extension by Yeah! Dev</h1>
+    <header id="heading" class="heading">
+      <h1 id="project_title" class="projectTitle">Yeah! URLs Extension by Yeah! Dev</h1>
     </header>
 
-    <div id="loginContainer">
-      <div id="loginHeader">
-        <h1><span>Login</span></h1>
+    <div id="loginContainer" class="baseContainer urlContainer">
+      <div id="loginHeader" class="containerHeader">
+        <h1><span>Login - URL's</span></h1>
       </div>
       <br/>
       <label for="txtEmailaddress"><strong>Email:</strong></label><br/>
@@ -21,13 +21,29 @@
       <label for="txtPassword"><strong>Password:</strong></label><br/>
       <input id="txtPassword" type="password" required />
       <br/><hr/>
-	    <button id="btnReset">Reset</button>
-	    <button id="btnLogin">Login</button>
+	    <button id="btnReset" class="btnReset">Reset</button>
+	    <button id="btnLogin" class="btnLogin">Login</button>
       <div id="status"></div>
     </div>
+    
+    <div id="loginToDoContainer" class="baseContainer toDoContainer">
+      <div id="loginHeader" class="containerHeader">
+        <h1><span>Login - ToDo's</span></h1>
+      </div>
+      <br/>
+      <label for="txtEmailaddressTodo"><strong>Email:</strong></label><br/>
+      <input id="txtEmailaddressTodo" type="email" required />
+      <br/><hr/>
+      <label for="txtPasswordTodo"><strong>Password:</strong></label><br/>
+      <input id="txtPasswordTodo" type="password" required />
+      <br/><hr/>
+	    <button id="btnResetTodo" class="btnReset">Reset</button>
+	    <button id="btnLoginTodo" class="btnLogin">Login</button>
+      <div id="statusTodo"></div>
+    </div>
 
-    <div id="otherContainer">
-      <div id="otherHeader">
+    <div id="otherContainer" class="baseContainer otherContainer">
+      <div id="otherHeader" class="containerHeader">
         <h1><span>Settings</span></h1>
       </div>
       <div id="otherBody">
@@ -47,7 +63,7 @@
       </div>
     </div>
 
-    <footer id="footing">
+    <footer id="footing" class="footing">
       <p>YEAH! URLs Extension maintained by <a target="blank" href="https://github.com/flashback2k14">flashback2k14</a></p>
     </footer>
     <!-- scripts -->

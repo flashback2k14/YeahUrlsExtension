@@ -2,6 +2,9 @@ var Util = (function (chrome, Promise, Firebase) {
 	var instance;
 
 	function setup() {
+		// Constants
+		var BASEURL = "https://yeah-url-extension.firebaseio.com/";
+		var BASETODO = "https://todoapp-appengine.firebaseio.com/";
 		//################//
 		//  		URLs			//
 		//################//
@@ -12,10 +15,10 @@ var Util = (function (chrome, Promise, Firebase) {
 		 * @param {HTMLElement} fiContainer
 		 */
 		function clearForm(listUrlHolder, txtKeywords, fiContainer) {
-			listUrlHolder.innerHTML = '';
-			txtKeywords.value = '';
-			fiContainer.classList.remove('is-focused');
-			fiContainer.classList.remove('is-dirty');
+			listUrlHolder.innerHTML = "";
+			txtKeywords.value = "";
+			fiContainer.classList.remove("is-focused");
+			fiContainer.classList.remove("is-dirty");
 		}
 		/**
 		 * Get current Tab from Chrome Browser Window
@@ -89,30 +92,30 @@ var Util = (function (chrome, Promise, Firebase) {
 		 * @param {HTMLElement} fiContainer
 		 */
 		function saveListToFirebase(listUrlHolder, txtKeywords, fiContainer) {
-			getOptions()
+			getOptions("URL")
 				.then(function (items) {
-					var userId = items.userLoginId;
-					var expireDate = items.loginExpireDate;
-					var currTimestamp = Math.round(Date.now() / 1000);
+					var userId = items.userIdUrl;
+					var baseRef = new Firebase(BASEURL);
+					var authData = baseRef.getAuth();
 
-					if ((userId === null) || (expireDate === null) || (typeof(userId) === 'undefined') || (typeof(expireDate) === 'undefined') || (currTimestamp >= expireDate)) {
-						alert('You are not logged in. Please go to the Options Menue.');
+					if (!authData) {
+						alert("You are not logged in. Please go to the Options Menue.");
 						clearForm(listUrlHolder, txtKeywords, fiContainer);
 						openSettings();
 						return false;
 					}
-
-					var urlCollectorRef = new Firebase("https://yeah-url-extension.firebaseio.com/" + userId + "/urlcollector").push();
+					
+					var urlCollectorRef = baseRef.child(userId + "/urlcollector").push();
 					var objId = urlCollectorRef.key();
 					var urlCollection = getUrlCollection(objId, listUrlHolder, txtKeywords);
 
 					urlCollectorRef.set(urlCollection, function onComplete() {
-						alert('Speicherung erfolgreich!');
+						alert("Speicherung erfolgreich!");
 						clearForm(listUrlHolder, txtKeywords, fiContainer);
 					});
 				})
 				.catch(function (err) {
-					alert('Error: ' + err);
+					alert("Error: " + err);
 				});
 		}
 		//################//
@@ -128,15 +131,15 @@ var Util = (function (chrome, Promise, Firebase) {
 		 * @param {HTMLElement} fiContainerNotes
 		 */
 		function clearNoteForm(txtTitle, txtKeywordsNote, txtNote, fiContainerNotesTitle, fiContainerNotesKeywords, fiContainerNotes) {
-			txtTitle.value = '';
-			txtKeywordsNote.value = '';
-			txtNote.value = '';
-			fiContainerNotesTitle.classList.remove('is-focused');
-			fiContainerNotesTitle.classList.remove('is-dirty');
-			fiContainerNotesKeywords.classList.remove('is-focused');
-			fiContainerNotesKeywords.classList.remove('is-dirty');
-			fiContainerNotes.classList.remove('is-focused');
-			fiContainerNotes.classList.remove('is-dirty');
+			txtTitle.value = "";
+			txtKeywordsNote.value = "";
+			txtNote.value = "";
+			fiContainerNotesTitle.classList.remove("is-focused");
+			fiContainerNotesTitle.classList.remove("is-dirty");
+			fiContainerNotesKeywords.classList.remove("is-focused");
+			fiContainerNotesKeywords.classList.remove("is-dirty");
+			fiContainerNotes.classList.remove("is-focused");
+			fiContainerNotes.classList.remove("is-dirty");
 		}
 		/**
 		 * Get Note from Form
@@ -170,30 +173,30 @@ var Util = (function (chrome, Promise, Firebase) {
 		 * @param {HTMLElement} fiContainerNotes
 		 */
 		function saveNoteToFirebase(txtTitle, txtKeywordsNote, txtNote, fiContainerNotesTitle, fiContainerNotesKeywords, fiContainerNotes) {
-			getOptions()
+			getOptions("URL")
 				.then(function (items) {
-					var userId = items.userLoginId;
-					var expireDate = items.loginExpireDate;
-					var currTimestamp = Math.round(Date.now() / 1000);
-
-					if ((userId === null) || (expireDate === null) || (typeof(userId) === 'undefined') || (typeof(expireDate) === 'undefined') || (currTimestamp >= expireDate)) {
-						alert('You are not logged in. Please go to the Options Menue.');
+					var userId = items.userIdUrl;
+					var baseRef = new Firebase(BASEURL);
+					var authData = baseRef.getAuth();
+					
+					if (!authData) {
+						alert("You are not logged in. Please go to the Options Menue.");
 						clearNoteForm(txtTitle, txtKeywordsNote, txtNote, fiContainerNotesTitle, fiContainerNotesKeywords, fiContainerNotes);
 						openSettings();
 						return;
 					}
-
-					var noteRef = new Firebase("https://yeah-url-extension.firebaseio.com/" + userId + "/notescollector").push();
+					
+					var noteRef = baseRef.child(userId + "/notescollector").push();
 					var objId = noteRef.key();
 					var note = getNoteFromForm(objId, txtTitle, txtKeywordsNote, txtNote);
 
 					noteRef.set(note, function onComplete() {
-						alert('Speicherung erfolgreich!');
+						alert("Speicherung erfolgreich!");
 						clearNoteForm(txtTitle, txtKeywordsNote, txtNote, fiContainerNotesTitle, fiContainerNotesKeywords, fiContainerNotes);
 					});
 				})
 				.catch(function (err) {
-					alert('Error: ' + err);
+					alert("Error: " + err.message);
 				});
 		}
 		//################//
@@ -204,9 +207,18 @@ var Util = (function (chrome, Promise, Firebase) {
 		 * @param {HTMLElement} listTodosHolder
 		 */
 		function loadTodosFromFirebase(listTodosHolder) {
-			getOptions()
+			getOptions("TODO")
 				.then(function (items) {
-					var todoRef = new Firebase("https://todoapp-appengine.firebaseio.com/todoitems");
+					var userId = items.userIdTodo;
+					var baseRef = new Firebase(BASETODO);
+					var authData = baseRef.getAuth();
+					
+					if (!authData) {
+						alert("You are not logged in. Please go to the Options Menue.");
+						openSettings();
+					}
+					
+					var todoRef = baseRef.child("todoitems/" + userId);
 					todoRef.on("value", function (snapshot) {
 						if (listTodosHolder !== null) {
 							if (listTodosHolder.children.length > 0) {
@@ -228,11 +240,27 @@ var Util = (function (chrome, Promise, Firebase) {
 		 * @param {HTMLElement} txtAddTodo
 		 */
 		function saveToDoToFirebase(listTodosHolder, txtAddTodo) {
-			var todoRef = new Firebase("https://todoapp-appengine.firebaseio.com/todoitems").push();
-			todoRef.set({ text: txtAddTodo.value }, function onComplete() {
-				alert("Speichern erfolgreich!");
-				txtAddTodo.value = "";
-			});
+			getOptions("TODO")
+				.then(function(items) {
+					var userId = items.userIdTodo;
+					var baseRef = new Firebase(BASETODO);
+					var authData = baseRef.getAuth();
+					
+					if (!authData) {
+						alert("You are not logged in. Please go to the Options Menue.");
+						openSettings();
+					}
+					
+					var todoRef = baseRef.child("todoitems/" + userId).push();
+					todoRef.set({ text: txtAddTodo.value }, function onComplete() {
+						alert("Speichern erfolgreich!");
+						txtAddTodo.value = "";
+					});
+					
+				})
+				.catch(function(err) { 
+					alert("Error: " + err.message); 
+				});
 		}
 		//################//
 		//  	Settings		//
@@ -241,14 +269,24 @@ var Util = (function (chrome, Promise, Firebase) {
 		 * Get saved options from Chrome Browser Storage
 		 * @returns {Promise}
 		 */
-		function getOptions() {
+		function getOptions(type) {
 			return new Promise(function (resolve, reject) {
-				chrome.storage.sync.get({
-					userLoginId: '',
-					loginExpireDate: ''
-				}, function (items) {
-					resolve(items);
-				});
+				switch(type) {
+					case "URL":
+						chrome.storage.sync.get("userIdUrl", function (items) {
+							resolve(items);
+						});
+						break;
+						
+					case "TODO":
+						chrome.storage.sync.get("userIdTodo", function (items) {
+							resolve(items);
+						});
+						break;
+						
+					default:
+						break;	
+				}
 			});
 		}
 		/**
@@ -258,7 +296,7 @@ var Util = (function (chrome, Promise, Firebase) {
 			if (chrome.runtime.openOptionsPage) {
 				chrome.runtime.openOptionsPage();
 			} else {
-				window.open(chrome.runtime.getURL('options.html'));
+				window.open(chrome.runtime.getURL("options.html"));
 			}
 		}
 		/**
