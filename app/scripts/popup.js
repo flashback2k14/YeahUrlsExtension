@@ -1,26 +1,9 @@
-window.addEventListener("load", function() { 
-  Util.get().getOptions("TODO")
-    .then(function (items) {
-      var userId = items.userIdTodo;
-      var baseRef = new Firebase("https://todoapp-appengine.firebaseio.com/");
-      var authData = baseRef.getAuth();
-      
-      if (!authData) {
-        alert("You are not logged in. Please go to the Options Menue.");
-        return;
-      }
-      
-      Util.get().loadTodosFromFirebase(document.querySelector("#listTodosHolder"));
-    })
-    .catch(function (err) {
-      alert("Error: " + err.message);
-    });
-});
-
 window.addEventListener("DOMContentLoaded", function() {
   /**
    * UI Elements
    */
+  // Tabs
+  var tabBarTodos = document.querySelector("#tabBarTodos");
   // URLs
   var btnGetUrl = document.querySelector("#btnGetUrl");
   var btnGetAllUrl = document.querySelector("#btnGetAllUrl");
@@ -47,6 +30,10 @@ window.addEventListener("DOMContentLoaded", function() {
   /**
    * EVENTLISTENER
    */
+  // Tabs
+  tabBarTodos.addEventListener("click", function() {
+    Util.get().loadTodosFromFirebase(listTodosHolder);
+  });
   // URLs
   btnGetUrl.addEventListener("click", function() {
     Util.get().getCurrentTab()

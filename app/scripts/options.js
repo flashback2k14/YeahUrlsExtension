@@ -40,9 +40,10 @@ window.addEventListener("load", function() {
 });
 
 window.addEventListener("DOMContentLoaded", function() {
+  // variables
+  // FB Urls
   var BASEURL = "https://yeah-url-extension.firebaseio.com/";
   var BASETODO = "https://todoapp-appengine.firebaseio.com/";
-  // variables
   // url
   var inputEmail = document.querySelector("#txtEmailaddress");
   var inputPassword = document.querySelector("#txtPassword");
