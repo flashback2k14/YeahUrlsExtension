@@ -1,7 +1,7 @@
 {
   "name": "Yeah! Urls Extension",
   "description": "This extension allows you to get all URLs from the open Tabs on the Window and collect Notes.",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "manifest_version": 2,
   "browser_action": {
     "default_icon": {
@@ -25,9 +25,9 @@
     "chrome_style": false
   },
   "content_scripts": [{
-		"matches": ["http://*/*", "https://*/*"],
-		"js": ["app/libs/firebase.min.js", "app/libs/material.min.js", "app/scripts/options.js", "app/scripts/popup.js", "app/scripts/util.js"],
-		"run_at": "document_end"
-	}],
-  "content_security_policy": "script-src 'self' https://yeah-url-extension.firebaseio.com https://todoapp-appengine.firebaseio.com https://s-softlayer.firebaseio.com/ https://s-dal5-nss-43.firebaseio.com/; object-src 'self'"
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["app/libs/firebase.min.js", "app/libs/material.min.js", "app/scripts/options.js", "app/scripts/popup.js", "app/scripts/util.js"],
+    "run_at": "document_end"
+  }],
+  "content_security_policy": "script-src 'self' https://yeah-url-extension.firebaseio.com https://todoapp-appengine.firebaseio.com https://s-softlayer.firebaseio.com/ https://s-dal5-nss-43.firebaseio.com/ https://s-usc1c-nss-135.firebaseio.com/ https://s-usc1c-nss-132.firebaseio.com/; object-src 'self'"
 }
